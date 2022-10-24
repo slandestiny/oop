@@ -6,7 +6,7 @@ import java.util.*
 
 fun main() {
     val post = Post(
-        id = 1,
+        id = 0,
         ownerId = 1,
         date = Date(),
         fromId = 1,
@@ -14,20 +14,32 @@ fun main() {
         comments = Comments(),
         likes = Likes(),
     )
-    val service = WallService()
-    service.add(post)
-    println(post)
+    val post1 = Post(
+        id = 3,
+        ownerId = 1,
+        date = Date(),
+        fromId = 1,
+        text = "text",
+        comments = Comments(),
+        likes = Likes(),
+    )
     val postNew = Post(
         id = 1,
         ownerId = 1,
-        date = Date(),
+        date = Date(122, 10, 22),
         fromId = 1,
         text = "blablabla",
         comments = Comments(),
         likes = Likes(),
     )
-    service.update(postNew)
+    val service = WallService()
+    service.add(post)
+    service.add(post1)
     println(post)
+    println(post1)
+    println(postNew)
+    service.update(postNew)
+    println(postNew)
 
 }
 

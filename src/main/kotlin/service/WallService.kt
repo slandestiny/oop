@@ -7,10 +7,8 @@ class WallService {
 
     // создание записи
     fun add(post: Post): Post {
-        for ((index, value) in posts.withIndex()) {
-            if (value.id == post.id)
-                return posts.last()
-        }
+        if (posts.size == 0) post.id = 1
+        else post.id = posts[posts.size - 1].id + 1
         posts += post
         return posts.last()
     }
@@ -18,12 +16,10 @@ class WallService {
     // обновление записи
     fun update(post: Post): Boolean {
         for ((index, value) in posts.withIndex()) {
-            if (value.id == post.id) {
-                value.text = post.text
-                value.comments = post.comments
-                value.likes = post.likes
-                value.candDelete = post.candDelete
-                value.canEdit = post.canEdit
+            if (post.id == value.id) {
+                posts[index] = post.copy()
+               post.ownerId = value.ownerId
+               post.date = value.date
                 return true
             }
         }

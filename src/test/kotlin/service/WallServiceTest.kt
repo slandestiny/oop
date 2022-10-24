@@ -3,8 +3,7 @@ package service
 import data.Comments
 import data.Likes
 import data.Post
-import junit.framework.TestCase.assertFalse
-import junit.framework.TestCase.assertTrue
+import junit.framework.TestCase.*
 import org.junit.Test
 import java.util.*
 
@@ -26,7 +25,7 @@ class WallServiceTest {
         // act
         val result = service.add(post)
         // assert
-        assert(result != null)
+        assertNotNull(result)
     }
 
     @Test
